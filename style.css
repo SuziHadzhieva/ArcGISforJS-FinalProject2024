@@ -6,3 +6,12 @@ body,
   height: 100%;
   width: 100%;
 }
+
+#layer-list-btn {
+  padding: 7px;
+  cursor: pointer;
+}
+
+div.esri-component.esri-layer-list.esri-widget.esri-widget--panel {
+  display: none;
+}
