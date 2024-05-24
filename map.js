@@ -44,6 +44,12 @@ require(["esri/config",
             view
         });
 
+        const scaleBar = new ScaleBar({
+            view
+        });
+
+        view.ui.add(scaleBar, { position: "bottom-right"});
+
         view.ui.add(directionsWidget, { position: "bottom-left" });
         view.ui.add("directions-btn", "bottom-left");
 
@@ -93,7 +99,7 @@ require(["esri/config",
                 const currentPropGallery = galleryEl.style.getPropertyValue("display");
                 galleryEl.style.setProperty("display", currentPropGallery == "none" ? "block" : "none");
             } else if  (element == "Directions") {
-                const directionsWidgetEL = document.getElementsByClassName("esri-icon-directions")[0];
+                const directionsWidgetEL = document.getElementsByClassName("esri-directions")[0];
                 const currentPropDirections = directionsWidgetEL.style.getPropertyValue("display");
                 directionsWidgetEL.style.setProperty("display", currentPropDirections == "none" ? "block" : "none")
             }
