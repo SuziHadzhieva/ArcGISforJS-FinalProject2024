@@ -6,7 +6,8 @@ require(["esri/config",
     "esri/widgets/BasemapGallery",
     "esri/widgets/Directions",
     "esri/layers/RouteLayer",
-    "esri/widgets/ScaleBar"
+    "esri/widgets/ScaleBar",
+    "esri/widgets/Search"
 ],
 
     function (
@@ -18,7 +19,8 @@ require(["esri/config",
         BasemapGallery,
         Directions,
         RouteLayer,
-        ScaleBar
+        ScaleBar,
+        Search
     ) {
 
         esriConfig.apiKey = "AAPK93e15526c55940619631d3b96000d5acRAQLN1zcT72Ln25ryedldXRP9pNurIj0EV-OCJIGsVvMARaHMy9KvnagXey2qa-f";
@@ -50,8 +52,8 @@ require(["esri/config",
 
         view.ui.add(scaleBar, { position: "bottom-right"});
 
-        view.ui.add(directionsWidget, { position: "bottom-left" });
         view.ui.add("directions-btn", "bottom-left");
+        view.ui.add(directionsWidget, "bottom-left" );
 
 
         const homeBtn = new Home({
@@ -60,9 +62,17 @@ require(["esri/config",
 
         view.ui.add(homeBtn, "top-left");
 
+        const searchWidget = new Search({
+            view
+          });
+
+
         const layerList = new LayerList({
             view
         });
+
+        view.ui.add("search-btn", "top-right");
+        view.ui.add(searchWidget, "top-right",);
         view.ui.add("layer-list-btn", "top-right");
         view.ui.add(layerList, "top-right");
         view.ui.add("basemap-gallery-btn", "top-right");
@@ -72,10 +82,6 @@ require(["esri/config",
         });
 
         view.ui.add(basemapGallery, "top-right");
-
-        // const scaleBarWidget = new ScaleBar({
-        //   view  
-        // });
 
         document.getElementById("layer-list-btn").addEventListener("click", function () {
             toggleButton("LayerList");
@@ -87,6 +93,10 @@ require(["esri/config",
 
         document.getElementById("directions-btn").addEventListener("click", function () {
             toggleButton("Directions");
+         });
+
+        document.getElementById("search-btn").addEventListener("click", function () {
+            toggleButton("Search");
          });
 
         function toggleButton(element) {
@@ -102,6 +112,10 @@ require(["esri/config",
                 const directionsWidgetEL = document.getElementsByClassName("esri-directions")[0];
                 const currentPropDirections = directionsWidgetEL.style.getPropertyValue("display");
                 directionsWidgetEL.style.setProperty("display", currentPropDirections == "none" ? "block" : "none")
+            } else if (element == "Search") {
+                const searchWidget = document.getElementsByClassName("esri-search")[0];
+                const currentPropSearch = searchWidget.style.getPropertyValue("display");
+                searchWidget.style.setProperty("display", currentPropSearch == "none" ? "block" : "none")
             }
         };
 

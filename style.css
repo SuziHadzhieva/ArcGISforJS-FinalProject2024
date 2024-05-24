@@ -7,7 +7,7 @@ body,
   width: 100%;
 }
 
-#layer-list-btn, #basemap-gallery-btn, #directions-btn {
+#layer-list-btn, #basemap-gallery-btn, #directions-btn, #search-btn {
   padding: 7px;
   cursor: pointer;
 }
@@ -21,5 +21,9 @@ div.esri-component.esri-basemap-gallery.esri-widget.esri-widget--panel-height-on
 }
 
 div.esri-component.esri-directions.esri-widget.esri-widget--panel.esri-directions__scroller {
+  display: none;
+}
+
+div.esri-component.esri-search.esri-widget {
   display: none;
 }
